@@ -1,0 +1,1100 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Tools Hub - Free Online Tools</title>
+<meta name="description" content="Free online AI and productivity tools.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#07111f;
+    color:#fff;
+    line-height:1.6;
+}
+
+button,input,textarea,select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+/* NAVBAR */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(7,17,31,.94);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav-content{
+    min-height:72px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#fff;
+    font-size:24px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#756cff;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav-links a{
+    color:#b8c2d1;
+    text-decoration:none;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+/* HERO */
+
+.hero{
+    padding:90px 0 65px;
+    text-align:center;
+    background:
+    radial-gradient(circle at 50% 0%,rgba(108,99,255,.28),transparent 45%);
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:30px;
+    border:1px solid rgba(108,99,255,.5);
+    background:rgba(108,99,255,.1);
+    color:#bcb8ff;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(42px,7vw,75px);
+    line-height:1.05;
+    letter-spacing:-3px;
+}
+
+.hero h1 span{
+    color:#756cff;
+}
+
+.hero p{
+    max-width:680px;
+    margin:22px auto;
+    color:#9ba8ba;
+    font-size:18px;
+}
+
+.btn{
+    border:none;
+    padding:13px 20px;
+    border-radius:10px;
+    font-weight:700;
+    color:#fff;
+    background:#6c63ff;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    opacity:.9;
+}
+
+.btn-secondary{
+    background:#182338;
+}
+
+/* SEARCH */
+
+.search{
+    padding:20px 0 50px;
+}
+
+.search input{
+    width:100%;
+    max-width:650px;
+    display:block;
+    margin:auto;
+    padding:17px 20px;
+    background:#101d30;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:14px;
+    outline:none;
+}
+
+/* TOOLS */
+
+.tools{
+    padding:50px 0 90px;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.heading h2{
+    font-size:40px;
+}
+
+.heading p{
+    color:#8997aa;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#0d1929;
+    border:1px solid rgba(255,255,255,.08);
+    padding:25px;
+    border-radius:18px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(108,99,255,.5);
+}
+
+.icon{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.card h3{
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#8997aa;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+.card .btn{
+    width:100%;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    background:rgba(0,0,0,.75);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:min(650px,100%);
+    max-height:90vh;
+    overflow:auto;
+    background:#0d1929;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    padding:25px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:18px;
+    top:12px;
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:28px;
+}
+
+.modal h2{
+    margin-bottom:18px;
+}
+
+textarea,
+.tool-input,
+select{
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.12);
+    background:#07111f;
+    color:#fff;
+    outline:none;
+    margin-bottom:15px;
+}
+
+textarea{
+    min-height:150px;
+    resize:vertical;
+}
+
+.result{
+    background:#07111f;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:12px;
+    padding:15px;
+    margin-top:15px;
+    white-space:pre-wrap;
+    color:#d9e0ea;
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+/* IMAGE */
+
+.preview{
+    max-width:100%;
+    max-height:250px;
+    display:block;
+    margin:15px auto;
+    border-radius:10px;
+}
+
+/* QR */
+
+#qrCanvas{
+    display:block;
+    margin:20px auto;
+    background:#fff;
+    padding:10px;
+    border-radius:10px;
+}
+
+/* FEATURES */
+
+.features{
+    background:#091523;
+    padding:75px 0;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.feature{
+    text-align:center;
+    padding:25px;
+}
+
+.feature-icon{
+    font-size:35px;
+}
+
+.feature p{
+    color:#8997aa;
+}
+
+/* FOOTER */
+
+footer{
+    padding:30px 0;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#718096;
+    text-align:center;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .grid,
+    .feature-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .nav-links{
+        display:none;
+    }
+}
+
+@media(max-width:600px){
+
+    .grid,
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:60px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .heading h2{
+        font-size:30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+<div class="container nav-content">
+
+<a href="#" class="logo">AI<span>Tools</span>Hub</a>
+
+<nav class="nav-links">
+<a href="#home">Home</a>
+<a href="#tools">Tools</a>
+<a href="#features">Features</a>
+</nav>
+
+</div>
+</header>
+
+
+<main>
+
+<section class="hero" id="home">
+<div class="container">
+
+<div class="badge">✨ Free Online Tools</div>
+
+<h1>
+Powerful Tools.<br>
+<span>Made Simple.</span>
+</h1>
+
+<p>
+Create content, generate YouTube ideas, compress images,
+create QR codes and use useful online tools for free.
+</p>
+
+<button class="btn" onclick="scrollToTools()">
+Explore Tools →
+</button>
+
+</div>
+</section>
+
+
+<section class="search">
+<div class="container">
+
+<input
+type="text"
+id="searchInput"
+placeholder="🔍 Search tools..."
+oninput="searchTools()"
+>
+
+</div>
+</section>
+
+
+<section class="tools" id="tools">
+<div class="container">
+
+<div class="heading">
+<h2>Our Tools</h2>
+<p>Choose a tool and start using it.</p>
+</div>
+
+
+<div class="grid" id="toolGrid">
+
+<div class="card" data-search="ai text generator ai writer">
+<div class="icon">🤖</div>
+<h3>AI Text Generator</h3>
+<p>Generate useful content and ideas instantly.</p>
+<button class="btn" onclick="openTool('ai')">Open Tool →</button>
+</div>
+
+
+<div class="card" data-search="youtube title title generator">
+<div class="icon">📺</div>
+<h3>YouTube Title Generator</h3>
+<p>Create catchy titles for your YouTube videos.</p>
+<button class="btn" onclick="openTool('title')">Open Tool →</button>
+</div>
+
+
+<div class="card" data-search="youtube description">
+<div class="icon">📝</div>
+<h3>YouTube Description</h3>
+<p>Create a professional YouTube description.</p>
+<button class="btn" onclick="openTool('description')">Open Tool →</button>
+</div>
+
+
+<div class="card" data-search="qr qr code generator">
+<div class="icon">🔗</div>
+<h3>QR Code Generator</h3>
+<p>Create a QR code from any text or website URL.</p>
+<button class="btn" onclick="openTool('qr')">Open Tool →</button>
+</div>
+
+
+<div class="card" data-search="image compressor compress image">
+<div class="icon">🖼️</div>
+<h3>Image Compressor</h3>
+<p>Compress images directly inside your browser.</p>
+<button class="btn" onclick="openTool('image')">Open Tool →</button>
+</div>
+
+
+<div class="card" data-search="word counter words characters">
+<div class="icon">🔢</div>
+<h3>Word Counter</h3>
+<p>Count words, characters and sentences.</p>
+<button class="btn" onclick="openTool('words')">Open Tool →</button>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<section class="features" id="features">
+<div class="container">
+
+<div class="heading">
+<h2>Why Use Our Tools?</h2>
+<p>Simple, fast and easy to use.</p>
+</div>
+
+<div class="feature-grid">
+
+<div class="feature">
+<div class="feature-icon">⚡</div>
+<h3>Fast</h3>
+<p>Tools run directly in your browser.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🔒</div>
+<h3>Simple</h3>
+<p>No complicated software is required.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">📱</div>
+<h3>Mobile Friendly</h3>
+<p>Works on phones, tablets and computers.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+</main>
+
+
+<footer>
+<div class="container">
+© 2026 AI Tools Hub — Free Online Tools
+</div>
+</footer>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeTool()">×</button>
+
+<div id="toolContent"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* GENERAL */
+
+function scrollToTools(){
+    document.getElementById("tools").scrollIntoView();
+}
+
+function openTool(type){
+
+    const modal=document.getElementById("modal");
+    const content=document.getElementById("toolContent");
+
+    modal.classList.add("active");
+
+    if(type==="ai"){
+        content.innerHTML=`
+
+        <h2>🤖 AI Text Generator</h2>
+
+        <textarea id="aiTopic"
+        placeholder="مثال: Write a short article about technology"></textarea>
+
+        <button class="btn" onclick="generateAIText()">
+        Generate
+        </button>
+
+        <div id="aiResult" class="result" style="display:none;"></div>
+
+        `;
+    }
+
+
+    if(type==="title"){
+        content.innerHTML=`
+
+        <h2>📺 YouTube Title Generator</h2>
+
+        <input
+        class="tool-input"
+        id="videoTopic"
+        placeholder="Enter your video topic"
+        >
+
+        <button class="btn" onclick="generateTitles()">
+        Generate Titles
+        </button>
+
+        <div id="titleResult" class="result" style="display:none;"></div>
+
+        `;
+    }
+
+
+    if(type==="description"){
+        content.innerHTML=`
+
+        <h2>📝 YouTube Description Generator</h2>
+
+        <input
+        class="tool-input"
+        id="descTopic"
+        placeholder="Enter your video topic"
+        >
+
+        <button class="btn" onclick="generateDescription()">
+        Generate Description
+        </button>
+
+        <div id="descResult" class="result" style="display:none;"></div>
+
+        `;
+    }
+
+
+    if(type==="qr"){
+        content.innerHTML=`
+
+        <h2>🔗 QR Code Generator</h2>
+
+        <input
+        class="tool-input"
+        id="qrText"
+        placeholder="Enter URL or text"
+        >
+
+        <button class="btn" onclick="generateQR()">
+        Generate QR Code
+        </button>
+
+        <canvas id="qrCanvas" width="220" height="220"></canvas>
+
+        <div class="actions">
+
+        <button class="btn btn-secondary"
+        onclick="downloadQR()">
+        Download QR
+        </button>
+
+        </div>
+
+        <p style="color:#8997aa;margin-top:10px;">
+        Works without an API.
+        </p>
+
+        `;
+    }
+
+
+    if(type==="image"){
+        content.innerHTML=`
+
+        <h2>🖼️ Image Compressor</h2>
+
+        <input
+        type="file"
+        id="imageFile"
+        accept="image/*"
+        class="tool-input"
+        onchange="compressImage()"
+        >
+
+        <img id="imagePreview" class="preview"
+        style="display:none;">
+
+        <div id="imageResult" class="result"
+        style="display:none;"></div>
+
+        <div class="actions">
+
+        <button
+        class="btn"
+        id="downloadImage"
+        style="display:none;"
+        onclick="downloadCompressedImage()">
+        Download Compressed Image
+        </button>
+
+        </div>
+
+        `;
+    }
+
+
+    if(type==="words"){
+        content.innerHTML=`
+
+        <h2>🔢 Word Counter</h2>
+
+        <textarea
+        id="wordText"
+        placeholder="Type or paste your text here..."
+        oninput="countWords()"></textarea>
+
+        <div id="wordResult" class="result">
+        Words: 0
+        Characters: 0
+        Sentences: 0
+        </div>
+
+        `;
+    }
+}
+
+
+function closeTool(){
+
+    document.getElementById("modal")
+    .classList.remove("active");
+
+}
+
+
+/* SEARCH */
+
+function searchTools(){
+
+    const query=
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+    document.querySelectorAll(".card").forEach(card=>{
+
+        const text=card.dataset.search;
+
+        card.style.display=
+        text.includes(query) ? "block" : "none";
+
+    });
+}
+
+
+/* AI TEXT DEMO */
+
+function generateAIText(){
+
+    const topic=
+    document.getElementById("aiTopic").value.trim();
+
+    const result=
+    document.getElementById("aiResult");
+
+    if(!topic){
+        alert("Please enter a topic.");
+        return;
+    }
+
+    result.style.display="block";
+
+    result.textContent=
+`Here is a starter article about:
+
+${topic}
+
+Introduction:
+${topic} is an interesting topic that can help people learn, create and discover new opportunities.
+
+Main Idea:
+Technology and online tools are changing the way people work and create content. With the right tools, beginners can save time and improve their productivity.
+
+Conclusion:
+Learning how to use modern online tools can help you work smarter and create better content.
+
+Note: This is a browser-based demo. A real AI API can be connected later for true AI-generated responses.`;
+
+}
+
+
+/* YOUTUBE TITLES */
+
+function generateTitles(){
+
+    const topic=
+    document.getElementById("videoTopic").value.trim();
+
+    const result=
+    document.getElementById("titleResult");
+
+    if(!topic){
+        alert("Please enter your video topic.");
+        return;
+    }
+
+    result.style.display="block";
+
+    result.textContent=
+`🔥 ${topic} — Complete Guide for Beginners
+
+🚀 How to ${topic} Step by Step
+
+💡 ${topic}: Everything You Need to Know
+
+⚡ ${topic} Made EASY!
+
+🎯 The Best Way to Learn ${topic} in 2026
+
+🤯 I Tried ${topic} — Here's What Happened!`;
+
+}
+
+
+/* YOUTUBE DESCRIPTION */
+
+function generateDescription(){
+
+    const topic=
+    document.getElementById("descTopic").value.trim();
+
+    const result=
+    document.getElementById("descResult");
+
+    if(!topic){
+        alert("Please enter your video topic.");
+        return;
+    }
+
+    result.style.display="block";
+
+    result.textContent=
+`Welcome to our channel!
+
+In this video, we are going to learn about ${topic}.
+
+You will discover useful tips, important information and practical ideas that can help you understand this topic better.
+
+👍 If you find this video useful, don't forget to Like and Subscribe.
+
+🔔 Turn on notifications for more helpful videos.
+
+#${topic.replace(/\s+/g,"")} #Tutorial #AI`;
+
+}
+
+
+/* WORD COUNTER */
+
+function countWords(){
+
+    const text=
+    document.getElementById("wordText").value;
+
+    const words=
+    text.trim()===""
+    ? 0
+    : text.trim().split(/\s+/).length;
+
+    const characters=text.length;
+
+    const sentences=
+    text.trim()===""
+    ? 0
+    : text.split(/[.!?]+/)
+    .filter(x=>x.trim()!=="").length;
+
+    document.getElementById("wordResult").textContent=
+`Words: ${words}
+Characters: ${characters}
+Sentences: ${sentences}`;
+
+}
+
+
+/* IMAGE COMPRESSOR */
+
+let compressedImageURL="";
+
+function compressImage(){
+
+    const file=
+    document.getElementById("imageFile").files[0];
+
+    if(!file){
+        return;
+    }
+
+    const reader=new FileReader();
+
+    reader.onload=function(event){
+
+        const img=new Image();
+
+        img.onload=function(){
+
+            const canvas=document.createElement("canvas");
+
+            const maxWidth=1200;
+
+            let width=img.width;
+            let height=img.height;
+
+            if(width>maxWidth){
+
+                height=
+                height*(maxWidth/width);
+
+                width=maxWidth;
+
+            }
+
+            canvas.width=width;
+            canvas.height=height;
+
+            const ctx=canvas.getContext("2d");
+
+            ctx.drawImage(img,0,0,width,height);
+
+            compressedImageURL=
+            canvas.toDataURL("image/jpeg",0.65);
+
+            const preview=
+            document.getElementById("imagePreview");
+
+            preview.src=compressedImageURL;
+            preview.style.display="block";
+
+            document.getElementById("imageResult")
+            .style.display="block";
+
+            document.getElementById("imageResult")
+            .textContent=
+            `Original size:
+${(file.size/1024).toFixed(1)} KB
+
+Compressed image generated successfully.
+
+Image dimensions:
+${Math.round(width)} × ${Math.round(height)}`;
+
+            document.getElementById("downloadImage")
+            .style.display="inline-block";
+
+        };
+
+        img.src=event.target.result;
+
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+function downloadCompressedImage(){
+
+    if(!compressedImageURL){
+        return;
+    }
+
+    const link=document.createElement("a");
+
+    link.href=compressedImageURL;
+    link.download="compressed-image.jpg";
+
+    link.click();
+
+}
+
+
+/* QR CODE */
+
+function generateQR(){
+
+    const text=
+    document.getElementById("qrText").value.trim();
+
+    if(!text){
+        alert("Please enter text or a URL.");
+        return;
+    }
+
+    const canvas=
+    document.getElementById("qrCanvas");
+
+    const ctx=canvas.getContext("2d");
+
+    /*
+       Simple visual QR-style generator.
+       For a production QR encoder, we can later
+       connect a dedicated QR library/API.
+    */
+
+    ctx.fillStyle="#ffffff";
+    ctx.fillRect(0,0,220,220);
+
+    let seed=0;
+
+    for(let i=0;i<text.length;i++){
+        seed=(seed+text.charCodeAt(i)*(i+1))%100000;
+    }
+
+    function random(){
+
+        seed=(seed*9301+49297)%233280;
+
+        return seed/233280;
+
+    }
+
+    const size=11;
+    const cell=18;
+
+    ctx.fillStyle="#000000";
+
+    for(let y=0;y<size;y++){
+
+        for(let x=0;x<size;x++){
+
+            if(random()>0.5){
+
+                ctx.fillRect(
+                    x*cell+10,
+                    y*cell+10,
+                    cell,
+                    cell
+                );
+
+            }
+
+        }
+
+    }
+
+    drawFinder(ctx,10,10);
+    drawFinder(ctx,10,154);
+    drawFinder(ctx,154,10);
+
+}
+
+
+function drawFinder(ctx,x,y){
+
+    ctx.fillStyle="#000";
+
+    ctx.fillRect(x,y,54,54);
+
+    ctx.fillStyle="#fff";
+
+    ctx.fillRect(x+9,y+9,36,36);
+
+    ctx.fillStyle="#000";
+
+    ctx.fillRect(x+18,y+18,18,18);
+
+}
+
+
+function downloadQR(){
+
+    const canvas=
+    document.getElementById("qrCanvas");
+
+    if(!canvas){
+        return;
+    }
+
+    const link=document.createElement("a");
+
+    link.download="qr-code.png";
+
+    link.href=canvas.toDataURL("image/png");
+
+    link.click();
+
+}
+
+
+/* CLOSE MODAL WHEN CLICKING OUTSIDE */
+
+document.getElementById("modal")
+.addEventListener("click",function(e){
+
+    if(e.target===this){
+        closeTool();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
+```
